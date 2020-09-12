@@ -14,4 +14,9 @@
       <a href="{{route('users.index')}}" class="nav-link"><i class="fas fa-users"></i> <span>Users</span></a>
     </li>
   </ul>
+  <ul class="sidebar-menu">
+    <li class="{{ Request::route()->getName() == 'gudang.index' ? ' active' : '' }}">
+      <a href="{{route('gudang.index')}}" class="nav-link"><i class="fas fa-users"></i> <span>Gudang</span></a>
+    </li>
+  </ul>
 </aside>

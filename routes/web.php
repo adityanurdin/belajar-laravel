@@ -40,9 +40,15 @@ Route::group(['middleware' => 'auth'], function() {
      */
     Route::resource('dashboard', 'DashboardController')->middleware('auth');
 
+    // USERS
     Route::get('users/data', 'UserController@data')->name('users.data');
     Route::get('users/{id}/destroy', 'UserController@destroy')->name('users.destroy');
     Route::resource('users', 'UserController')->except(['destroy']);
+    
+    // Gudang
+    Route::get('gudang/data','GudangController@data')->name('gudang.data');
+    Route::get('gudang/{slug}/delete','GudangController@destroy')->name('gudang.destroy');
+    Route::resource('gudang', 'GudangController')->except(['destroy']);
     
     Route::get('logout', 'Auth\AuthController@logout')->name('logout');
 });
