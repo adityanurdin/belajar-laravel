@@ -54,9 +54,12 @@ class GudangController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $gudang = Gudang::with('barangs')
+                        ->where('slug', $slug)
+                        ->first();
+        return view('dashboard.gudang.show', compact('gudang'));
     }
 
     /**
@@ -126,8 +129,9 @@ class GudangController extends Controller
                         ->editColumn('nama_gudang', function($item) {
                             $nama = $item->nama_gudang.'<br>';
                             $edit = '<a href="'. route('gudang.edit', $item->slug) .'">Edit</a> ';
-                            $delete = '<a href="javascript:void(0)" onclick="myConfirm('.$item->id.')">Delete</a>';
-                            return $nama.$edit.$delete;
+                            $delete = '<a href="javascript:void(0)" onclick="myConfirm('.$item->id.')">Delete</a> ';
+                            $show   = '<a href="'.route('gudang.show', $item->slug).'">Show</a>';
+                            return $nama.$edit.$delete.$show;
                         })
                         ->escapeColumns([])
                         ->make(true);

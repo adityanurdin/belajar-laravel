@@ -58,7 +58,7 @@ class AuthController extends Controller
         $request->merge([
             'password' => Hash::make($request->password)
         ]);
-        $user = User::create($request->all());
+        $user = User::create($request->except(['password_confirmation']));
         
         if ( $user ) {
             return redirect()->route('login');

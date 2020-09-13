@@ -49,6 +49,12 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('gudang/data','GudangController@data')->name('gudang.data');
     Route::get('gudang/{slug}/delete','GudangController@destroy')->name('gudang.destroy');
     Route::resource('gudang', 'GudangController')->except(['destroy']);
+
+    // Barang
+    Route::get('barang/{slug}/restore', 'BarangController@restore')->name('barang.restore');
+    Route::get('barang/{slug}/delete', 'BarangController@destroy')->name('barang.destroy');
+    Route::get('barang/data', 'BarangController@data')->name('barang.data');
+    Route::resource('barang', 'BarangController')->except(['destroy']);
     
     Route::get('logout', 'Auth\AuthController@logout')->name('logout');
 });
