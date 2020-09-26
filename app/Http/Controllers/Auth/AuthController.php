@@ -26,7 +26,12 @@ class AuthController extends Controller
         $login = Auth::attempt($credentials);
 
         if ($login) {
-            return redirect()->route('dashboard.index');
+            if (Auth::user()->status === 1) {
+                return redirect()->route('dashboard.index');
+            }
+            
+            Auth::logout();
+            return redirect()->route('login');
         } else {
             return redirect()->route('login');
         }

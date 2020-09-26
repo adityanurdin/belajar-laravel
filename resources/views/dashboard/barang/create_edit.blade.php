@@ -78,6 +78,13 @@
                                 </div>
                             </div>
 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Harga</label>
+                                    <input type="number" name="harga" id="" value="{{isset($barang) ? $barang->harga : ' ' }}" class="form-control">
+                                </div>
+                            </div>
+
                         </div>
                        
                         

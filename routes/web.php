@@ -40,10 +40,12 @@ Route::group(['middleware' => 'auth'], function() {
      */
     Route::resource('dashboard', 'DashboardController')->middleware('auth');
 
-    // USERS
-    Route::get('users/data', 'UserController@data')->name('users.data');
-    Route::get('users/{id}/destroy', 'UserController@destroy')->name('users.destroy');
-    Route::resource('users', 'UserController')->except(['destroy']);
+    Route::group(['middleware' => 'Owner'], function(){
+        // USERS
+        Route::get('users/data', 'UserController@data')->name('users.data');
+        Route::get('users/{id}/destroy', 'UserController@destroy')->name('users.destroy');
+        Route::resource('users', 'UserController')->except(['destroy']);
+    });
     
     // Gudang
     Route::get('gudang/data','GudangController@data')->name('gudang.data');
@@ -55,6 +57,12 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('barang/{slug}/delete', 'BarangController@destroy')->name('barang.destroy');
     Route::get('barang/data', 'BarangController@data')->name('barang.data');
     Route::resource('barang', 'BarangController')->except(['destroy']);
+
+    // Transaksi
+    Route::get('transaksi', 'TransaksiController@index')->name('transaksi.index');
+    Route::get('transaksi/create', 'TransaksiController@create')->name('transaksi.create');
+    Route::post('transaksi/store', 'TransaksiController@store')->name('transaksi.store');
+    Route::get('transaksi/data', 'TransaksiController@data')->name('transaksi.data');
     
     Route::get('logout', 'Auth\AuthController@logout')->name('logout');
 });

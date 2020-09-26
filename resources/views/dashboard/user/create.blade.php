@@ -55,6 +55,31 @@
 
                         </div>
 
+                        <div class="row">
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Role</label>
+                                    <select class="form-control" name="role">
+                                        <option value="owner"> Owner</option>
+                                        <option value="admin">Admin</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select class="form-control" name="status">
+                                      <option value="1">Active</option>
+                                      <option value="0">Non Active</option>
+                                    </select>
+                                  </div>
+                            </div>
+
+
+                        </div>
+
                         <a href="#" class="btn btn-outline-primary float-left">Kembali</a>
                         <button type="submit" class="btn btn-primary float-right">Simpan</button>
 

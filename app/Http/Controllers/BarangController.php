@@ -142,7 +142,7 @@ class BarangController extends Controller
                                 return $nama.$edit.$delete;
                             })
                             ->addColumn('gudang', function($item) {
-                                $gudang = Gudang::find($item->id);
+                                $gudang = Gudang::find($item->gudang_id);
                                 return $gudang->nama_gudang;
                             })
                             ->escapeColumns([])
